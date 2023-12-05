@@ -1,0 +1,18 @@
+Description: skip internet-connecting test
+Author: Tianon Gravi <tianon@debian.org>
+
+--- a/canonical_test.go
++++ b/canonical_test.go
+@@ -93,8 +93,12 @@
+ 	}
+ }
+ 
+ func TestHeaderWrites(t *testing.T) {
++	if testing.Short() {
++		t.Skip("skipping internet-connecting test in short mode")
++	}
++
+ 	gorilla := "http://www.gorillatoolkit.org"
+ 
+ 	testHandler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+ 		w.WriteHeader(200)

@@ -1,5 +1,7 @@
 Description: skip internet-connecting test
 Author: Tianon Gravi <tianon@debian.org>
+Reviewed-by: Dmitry Smirnov, <onlyjob@member.fsf.org>, Anthony Fok <foka@debian.org>
+Last-Update: 2015-09-05, 2016-04-11, 2023-12-08
 
 --- a/canonical_test.go
 +++ b/canonical_test.go
@@ -15,4 +17,4 @@ Author: Tianon Gravi <tianon@debian.org>
  	gorilla := "http://www.gorillatoolkit.org"
  
  	testHandler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
- 		w.WriteHeader(200)
+ 		w.WriteHeader(http.StatusOK)
